@@ -1,7 +1,8 @@
 <template>
-    <div id="header">
-      <input name="search" type="text" default="Robots" />
-    </div>
+  <div id="header">
+    <div id="logo">Logo</div>
+    <div id="title">Title</div>
+  </div>    
 </template>
 
 <script>
@@ -15,13 +16,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 #header {
-
-}
-
-
-input {
-  font-size: 24pt;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>
