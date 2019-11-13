@@ -1,8 +1,14 @@
 <template>
   <li :style="{ backgroundImage:'url(' + background + ')' }">
-    <div class="title">{{title}}</div>
+    <!-- <div class="title">{{title}}</div> -->
     <div v-bind:class="avaiableClass" class="status">
       {{status}}
+    </div>
+    <div class="info">
+      <div>{{title}}</div>
+      <p>This is in the information available about the 
+        thing.
+      </p>
     </div>
   </li>
 </template>
@@ -36,6 +42,21 @@ export default {
     background-size: cover;
   }
 
+  li:hover .info {
+    display: block;
+  }
+
+
+  .info {
+    display:none;
+    background-color: rgba(255,255,255,0.9);
+    margin: -10px;
+    border-radius: 12px;
+    height: 295px;
+    z-index: 11;
+    position: relative;
+  }
+
   .title{
     font-size: 2em;
     text-align: left;
@@ -50,7 +71,8 @@ export default {
     color: white;
     margin-left:-10px;
     padding-top: 5px;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    z-index: 12;
   }
   .status.available {
     background-color: seagreen;
