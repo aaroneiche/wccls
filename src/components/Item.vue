@@ -1,8 +1,7 @@
 <template>
-  <li>
-    {{title}}
-    
-    <div class="status">
+  <li :style="{ backgroundImage:'url(' + background + ')' }">
+    <div class="title">{{title}}</div>
+    <div v-bind:class="avaiableClass" class="status">
       {{status}}
     </div>
   </li>
@@ -14,7 +13,12 @@ export default {
   props: {
     title: String,
     background: String,
-    status: String
+    status: String,
+  },
+  computed: {
+    avaiableClass: function() {
+     return (this.status == 'available') ? "available" : "waitlist";
+    }
   }
 }
 </script>
@@ -27,14 +31,31 @@ export default {
 
     border: solid black 3px;
     border-radius: 15px;
+    box-sizing: border-box;
+    padding:10px;
+    background-size:contain;
   }
 
+  .title{
+    font-size: 2em;
+    text-align: left;
+    font-weight: bold;
+  }
   .status {
     position: absolute;
     bottom: 20px;
     width: 100%;
     font-weight: bold;
     text-transform: capitalize;
+    color: white;
+    margin-left:-10px;
   }
+  .status.available {
+    background-color: lightgreen;
+  }
+  .status.waitlist {
+    background-color: salmon;
+  }
+
 
 </style>

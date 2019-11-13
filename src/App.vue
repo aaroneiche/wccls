@@ -1,5 +1,6 @@
 <template>
   <div id="app">    
+    <!-- <Notification id="notification"/> -->
     <Header id="header"/>
     <Search id="search"/>
     <Items id="items" />
@@ -10,13 +11,15 @@
 import Header from './components/Header.vue'
 import Search from './components/Search.vue'
 import Items from './components/Items.vue' 
+import Notification from './components/Notification.vue'
 
 export default {
   name: 'app',
   components: {
     Header,
     Search,
-    Items
+    Items,
+    Notification
   }
 }
 </script>
@@ -35,7 +38,5 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-
 }
 </style>

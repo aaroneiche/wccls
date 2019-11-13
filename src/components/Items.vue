@@ -3,7 +3,8 @@
     <Item v-bind:key="s.title" v-for="s in set" 
       v-bind:title="s.title"
       v-bind:status="s.status"
-      v-bind:background="background"/>
+      v-bind:background="s.background"
+      />
   </ul>
 </template>
 <script>
@@ -15,38 +16,38 @@ export default {
       set: [
         {
           title:"Book 1",
-          background: "something",
-          status:"reserved"
+          status:"waitlist",
+          background:"static/c1.jpg"
         },
         {
           title:"Book 2",
-          background: "something",
-          status:"available"
+          status:"available",
+          background:"static/c2.jpg"
         },
         {
           title:"Book 3",
-          background: "something",
-          status:"reserved"
+          status:"waitlist",
+          background:"static/c3.jpg"
         },
         {
           title:"Book 4",
-          background: "something",
-          status:"available"
+          status:"available",
+          background:"static/c2.jpg"
         },
         {
           title:"Book 5",
-          background: "something",
-          status:"available"
+          status:"available",
+          background:"static/c3.jpg"
         },
         {
           title:"Book 6",
-          background: "something",
-          status:"reserved"
+          status:"waitlist",
+          background:"static/c1.jpg"
         },
         {
           title:"Book 7",
-          background: "something",
-          status:"reserved"
+          status:"waitlist",
+          background:"static/c1.jpg"
         }                        
       ]
     }
@@ -64,6 +65,6 @@ export default {
     justify-content: space-evenly;
 
     list-style-type: none;
-    
+    padding: 0; 
   }
 </style>
