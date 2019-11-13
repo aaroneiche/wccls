@@ -33,7 +33,7 @@ export default {
     border-radius: 15px;
     box-sizing: border-box;
     padding:10px;
-    background-size:contain;
+    background-size: cover;
   }
 
   .title{
@@ -49,12 +49,14 @@ export default {
     text-transform: capitalize;
     color: white;
     margin-left:-10px;
+    padding-top: 5px;
+    padding-bottom: 5px
   }
   .status.available {
-    background-color: lightgreen;
+    background-color: seagreen;
   }
   .status.waitlist {
-    background-color: salmon;
+    background-color: firebrick;
   }
 
 
