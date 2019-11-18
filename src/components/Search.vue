@@ -1,5 +1,5 @@
 <template>
-  <input name="search" type="text" default="Robots" />  
+  <input name="search" type="text" placeholder="Search here for available materials" />  
 </template>
 
 <script>
@@ -11,6 +11,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   input {
-    font-size: 24pt;
+    font-size: 14pt;
   }
 </style>

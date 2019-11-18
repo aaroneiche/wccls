@@ -1,6 +1,6 @@
 <template>
   <div id="app">    
-    <!-- <Notification id="notification"/> -->
+    <Notification id="notification" v-if="notify" />
     <Header id="header"/>
     <Search id="search"/>
     <Items id="items" />
@@ -20,7 +20,12 @@ export default {
     Search,
     Items,
     Notification
-  }
+  },
+  data: function(){
+    return {
+      notify: false
+    }
+  } 
 }
 </script>
 
@@ -33,6 +38,7 @@ export default {
   color: #2c3e50;
   margin-left: 10%;
   margin-right: 10%;
+  max-width: 640px;
 
 
   display: flex;

@@ -1,7 +1,8 @@
 <template>
-  <li :style="{ backgroundImage:'url(' + background + ')' }">
+  <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo" >
     <!-- <div class="title">{{title}}</div> -->
-    <div v-bind:class="avaiableClass" class="status">
+    <div v-bind:class="availableClass" class="status"
+      v-on:click="reserve" >
       {{status}}
     </div>
     <div class="info">
@@ -20,12 +21,24 @@ export default {
     title: String,
     background: String,
     status: String,
+    isbn: String
   },
   computed: {
-    avaiableClass: function() {
+    availableClass: function() {
      return (this.status == 'available') ? "available" : "waitlist";
     }
+  },
+  methods: {
+    moreInfo(event) {
+      console.log(this.isbn)
+    },
+    reserve(event) {
+      console.log(this);
+      console.log(this.status);
+      
+    }
   }
+
 }
 </script>
 <style scoped>
@@ -40,12 +53,12 @@ export default {
     box-sizing: border-box;
     padding:10px;
     background-size: cover;
+    cursor: pointer;
   }
 
   li:hover .info {
     display: block;
   }
-
 
   .info {
     display:none;

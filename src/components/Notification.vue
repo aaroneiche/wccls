@@ -20,10 +20,10 @@ export default {
     height: 100px;
     background-color: white;
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     margin: 0 auto;
     align-self: center;
-    top:10%;
+    top:20%;
     border-radius: 15px;
     border-color: #C4D03C;
     border-width: 3px;

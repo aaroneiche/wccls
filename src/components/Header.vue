@@ -1,7 +1,7 @@
 <template>
   <div id="header">
-    <div id="logo">Logo</div>
-    <div id="title">Title</div>
+    <div id="logo"></div>
+    <div id="title">Washington County Cooperative Library Services Catalog</div>
   </div>    
 </template>
 
@@ -21,4 +21,19 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
+
+#title {
+  width: 450px;
+  font-size: 20pt;
+  text-align: right;
+  }
+
+
+#logo {
+  background-image: url("../assets/wccls-logo.jpg");
+  background-size: contain;
+  height: 75px;
+  width: 75px;
+}
+
 </style>
