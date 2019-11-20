@@ -2,8 +2,7 @@
   <div id="app">    
     <Notification id="notification" v-if="notify" />
     <Header id="header"/>
-    <Search id="search"/>
-    <Items id="items" />
+    <router-view></router-view>
   </div>
 </template>
 

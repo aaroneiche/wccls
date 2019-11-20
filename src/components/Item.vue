@@ -10,6 +10,7 @@
       <p>This is in the information available about the 
         thing.
       </p>
+      <router-link :to="`/${isbn}`">Go to Foo</router-link>
     </div>
   </li>
 </template>
