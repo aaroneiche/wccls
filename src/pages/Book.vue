@@ -1,6 +1,12 @@
 <template>
   <div id="Book">    
     this is a book.
+    <div id="cover">
+
+    </div>
+    <div id="info">
+
+    </div>
   </div>
 </template>
 
@@ -15,11 +21,19 @@ export default {
     return {
       notify: false
     }
-  } 
+  },
+  mounted() {
+   console.log(this.$route.params.book);
+   
+  },
 }
 </script>
 
 <style>
+#book {
+  display: flexbox;
+  flex-direction: row;
 
+}
 </style>
     

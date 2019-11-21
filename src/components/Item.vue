@@ -2,7 +2,7 @@
   <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo" >
     <!-- <div class="title">{{title}}</div> -->
     <div v-bind:class="availableClass" class="status"
-      v-on:click="reserve" >
+      v-on:click.stop="reserve"  >
       {{status}}
     </div>
     <div class="info">
@@ -10,12 +10,14 @@
       <p>This is in the information available about the 
         thing.
       </p>
-      <router-link :to="`/${isbn}`">Go to Foo</router-link>
     </div>
   </li>
 </template>
 
 <script>
+
+// import router from "@/router.js";
+
 export default {
   name:"Item",
   props: {
@@ -31,12 +33,11 @@ export default {
   },
   methods: {
     moreInfo(event) {
-      console.log(this.isbn)
+      this.$router.push({ path: `${this.isbn}`});
+      
     },
     reserve(event) {
-      console.log(this);
       console.log(this.status);
-      
     }
   }
 
