@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <Item v-bind:key="s.isbn" v-for="s in search()" 
+    <Item v-bind:key="s.isbn" v-for="s in filteredSet()" 
       v-bind:title="s.title"
       v-bind:status="s.status"
       v-bind:background="s.background"
@@ -19,10 +19,12 @@ export default {
     }
   },
   methods: {
-    search () {
+    filteredSet () {
       if(this.$root.$data.search.length > 0){
         return this.$root.$data.set.filter(e=>{
-          return e.title.match(`/${this.$root.$data.search}/gi`) != null;
+          console.log(e.title + " " + `/${this.$root.$data.search}/gi`);
+          let r = new RegExp(`${this.$root.$data.search}`, 'gi');
+          return e.title.match(r) != null;
         });
       }else{
         return this.$root.$data.set;
