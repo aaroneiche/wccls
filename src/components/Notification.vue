@@ -1,15 +1,25 @@
 <template>
   <div class="notification">
-    <p>You have been added to the waitlist for this material. We will notify you when it has been </p>
-    <button id="action">  
-      My Reservations
-    </button>
+    <p>You have been added to the waitlist for {{this.material}}. We will notify you when it has been </p>
+    <div>
+      <button id="reserve">Go to My Reservations</button>
+      <button id="close" v-on:click="closeNotification">Close</button>
+    </div>
+    
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'Notification',
+  props: {
+    material: String
+  },
+  methods: {
+    closeNotification () {
+      this.$root.$data.notification.visible = false;
+    }
+  }
 }
 </script>
 
@@ -39,8 +49,13 @@ export default {
   }
 
   button {
-    border-radius: 15px;
-
+    border-radius: 10px;
+    height: 30px;
+    width: 85px;
+    margin-top: 5px;
+    color: #006cA7;
+    border-color: #C4D03C;
+    font-weight: bold;
   }
 
 </style>

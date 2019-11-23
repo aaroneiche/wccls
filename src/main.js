@@ -66,8 +66,12 @@ new Vue({
         background:"static/c1.jpg",
         description: "This is a book about stuff that happens and it's really great and I think you should read it and I hope that you're considering it right now. "
       }                        
-    ]
-
+    ],
+    search: "",
+    reservations: [],
+    notification: {
+      visible: false,
+      material: ""
+    }
   }
-
 }).$mount('#app')

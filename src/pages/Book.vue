@@ -5,7 +5,7 @@
       <h2 id="bookTitle"></h2>
       <h3 id="author"></h3>
       <div id="description"></div>
-      <div class="status" v-bind:class="availableClass">{{reserveStatus}}</div>
+      <div class="status" v-on:click.stop="reserve"  v-bind:class="availableClass">{{reserveStatus}}</div>
     </div>
   </div>
 </template>
@@ -26,7 +26,11 @@ export default {
       return (this.book.status == 'available') ? "available" : "waitlist";
     },
     reserveStatus: function() {
-      return (this.book.status == 'available') ? "Reserve" : "Waitlist";
+      if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
+        return "Reserved";
+      }else{
+        return (this.book.status == 'available') ? "Reserve" : "Waitlist";
+      }
     }
   },
   methods: {
@@ -35,6 +39,13 @@ export default {
       document.getElementById('bookTitle').innerHTML = this.book.title;
       document.getElementById('author').innerHTML = this.book.author;
       document.getElementById('description').innerHTML = this.book.description;
+    },
+    reserve(event) {
+      console.log(`reserving ${this.book.isbn}`); 
+      if(this.$root.$data.reservations.indexOf(this.book.isbn) == -1 ){
+        this.$root.$data.reservations.push(this.book.isbn);
+        this.$forceUpdate();
+      }
     }
   },
   mounted() {

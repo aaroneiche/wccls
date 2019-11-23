@@ -1,10 +1,18 @@
 <template>
-  <input name="search" type="text" placeholder="Search here for available materials" />  
+  <input id="search" name="search" type="text" placeholder="Search here for available materials" 
+    v-on:input="search"/>  
 </template>
 
 <script>
   export default {
-    name: 'Search'
+    name: 'Search',
+    methods: {
+      search() {
+        //limit the books listed to a single search term
+        this.$root.$data.search = document.getElementById("search").value;
+      }
+    }
+
   }
 </script>
 

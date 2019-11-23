@@ -1,6 +1,6 @@
 <template>
   <div id="app">    
-    <Notification id="notification" v-if="notify" />
+    <Notification id="notification" v-if="notify" v-bind:material="material"/> 
     <Header id="header"/>
     <router-view></router-view>
   </div>
@@ -20,11 +20,14 @@ export default {
     Items,
     Notification
   },
-  data: function(){
-    return {
-      notify: false
+  computed: {
+    notify(){
+      return this.$root.$data.notification.visible
+    },
+    material() {
+      return this.$root.$data.notification.material
     }
-  } 
+  }
 }
 </script>
 

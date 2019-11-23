@@ -2,13 +2,12 @@
   <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo" >
     <!-- <div class="title">{{title}}</div> -->
     <div v-bind:class="availableClass" class="status"
-      v-on:click.stop="reserve"  >
-      {{status}}
+      v-on:click.stop="reserve">
+      {{reserveStatus}}
     </div>
     <div class="info">
       <div>{{title}}</div>
-      <p>This is in the information available about the 
-        thing.
+      <p>{{description}}
       </p>
     </div>
   </li>
@@ -24,11 +23,19 @@ export default {
     title: String,
     background: String,
     status: String,
-    isbn: String
+    isbn: String,
+    description: String
   },
   computed: {
     availableClass: function() {
      return (this.status == 'available') ? "available" : "waitlist";
+    },
+    reserveStatus: function() {
+      if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
+        return "Reserved";
+      }else{
+        return (this.status == 'available') ? "Reserve" : "Waitlist";
+      }
     }
   },
   methods: {
@@ -37,7 +44,13 @@ export default {
       
     },
     reserve(event) {
-      console.log(this.status);
+      if(this.$root.$data.reservations.indexOf(this.isbn) == -1 ){
+        this.$root.$data.reservations.push(this.isbn);
+        this.$root.$data.notification.visible = true;
+        this.$root.$data.notification.material = this.title;
+        this.$forceUpdate();
+      }
+      //Alert the user!
     }
   }
 
