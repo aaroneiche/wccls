@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     moreInfo(event) {
-      this.$router.push({ path: `${this.isbn}`});
+      this.$router.push({ path: `materials/${this.isbn}`});
       
     },
     reserve(event) {
