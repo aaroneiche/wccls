@@ -22,7 +22,6 @@ export default {
     filteredSet () {
       if(this.$root.$data.search.length > 0){
         return this.$root.$data.set.filter(e=>{
-          console.log(e.title + " " + `/${this.$root.$data.search}/gi`);
           let r = new RegExp(`${this.$root.$data.search}`, 'gi');
           return e.title.match(r) != null;
         });

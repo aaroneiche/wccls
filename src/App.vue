@@ -9,7 +9,6 @@
 <script>
 import Header from './components/Header.vue'
 import Search from './components/Search.vue'
-import Items from './components/Items.vue' 
 import Notification from './components/Notification.vue'
 
 export default {
@@ -17,7 +16,6 @@ export default {
   components: {
     Header,
     Search,
-    Items,
     Notification
   },
   computed: {

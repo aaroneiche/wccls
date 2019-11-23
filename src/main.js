@@ -12,7 +12,7 @@ new Vue({
     set: [
       {
         isbn:"123456",
-        title:"Book 1",
+        title:"Book Num 1",
         author:"Austen Jane",
         status:"waitlist",
         background:"static/c1.jpg",
@@ -28,7 +28,7 @@ new Vue({
       },
       {
         isbn:"123458",
-        title:"Book 3",
+        title:"Book NUm 3",
         author:"Go around a",
         status:"waitlist",
         background:"static/c3.jpg",
@@ -36,7 +36,7 @@ new Vue({
       },
       {
         isbn:"123459",
-        title:"Book 4",
+        title:"Book 4 is great",
         author:"Some guy who",
         status:"available",
         background:"static/c2.jpg",
