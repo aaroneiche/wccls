@@ -39,11 +39,11 @@ export default {
     }
   },
   methods: {
-    moreInfo(event) {
+    moreInfo() {
       this.$router.push({ path: `materials/${this.isbn}`});
       
     },
-    reserve(event) {
+    reserve() {
       if(this.$root.$data.reservations.indexOf(this.isbn) == -1 ){
         this.$root.$data.reservations.push(this.isbn);
         this.$root.$data.notification.visible = true;

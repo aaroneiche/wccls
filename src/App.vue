@@ -8,14 +8,12 @@
 
 <script>
 import Header from './components/Header.vue'
-import Search from './components/Search.vue'
 import Notification from './components/Notification.vue'
 
 export default {
   name: 'app',
   components: {
     Header,
-    Search,
     Notification
   },
   computed: {
