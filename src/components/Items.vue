@@ -20,7 +20,13 @@ export default {
   },
   methods: {
     filteredSet () {
-      if(this.$root.$data.search.length > 0){
+      if(this.$router.currentRoute.path == "/reservations") {
+        return this.$root.$data.set.filter(e=>{
+          console.log(e.isbn);
+          console.log(this.$root.$data.reservations);
+          return this.$root.$data.reservations.indexOf(e.isbn) != -1;
+        });
+      }else if(this.$root.$data.search.length > 0){
         return this.$root.$data.set.filter(e=>{
           let r = new RegExp(`${this.$root.$data.search}`, 'gi');
           return e.title.match(r) != null;
@@ -28,11 +34,17 @@ export default {
       }else{
         return this.$root.$data.set;
       }
-
-    }
+    },
   },
   components: {
     Item
+  },
+  mounted () {
+    console.log(this.$router.currentRoute);
+    if(this.$router.currentRoute.path == "/reservations") {
+      //filter the set
+      console.log("This is where we are.")
+    }
   }
 }
 </script>

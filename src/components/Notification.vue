@@ -2,7 +2,7 @@
   <div class="notification">
     <p>You have been added to the waitlist for {{this.material}}. We will notify you when it has been </p>
     <div>
-      <button id="reserve">Go to My Reservations</button>
+      <button id="reserve" v-on:click="goToReservation">Go to My Reservations</button>
       <button id="close" v-on:click="closeNotification">Close</button>
     </div>
     
@@ -17,6 +17,10 @@ export default {
   },
   methods: {
     closeNotification () {
+      this.$root.$data.notification.visible = false;
+    },
+    goToReservation () {
+      this.$router.push({ path: `/reservations`});
       this.$root.$data.notification.visible = false;
     }
   }
