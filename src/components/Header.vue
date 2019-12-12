@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <div id="logo"></div>
+    <div id="logo" v-on:click="goHome"></div>
     <div id="title">Washington County Cooperative Library Services Catalog</div>
   </div>    
 </template>
@@ -10,6 +10,11 @@ export default {
   name: 'Header',
   props: {
     msg: String
+  },
+  methods: {
+    goHome() {
+      this.$router.push({ path: `/`});
+    }
   }
 }
 </script>
@@ -34,6 +39,7 @@ export default {
   background-size: contain;
   height: 75px;
   width: 75px;
+  cursor: pointer;
 }
 
 </style>
