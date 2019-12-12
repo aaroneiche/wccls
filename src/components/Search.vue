@@ -1,6 +1,9 @@
 <template>
-  <input id="search" name="search" type="text" placeholder="Search here for available materials" 
-    v-on:input="search"/>  
+  <div>
+    <input id="search" name="search" type="text" placeholder="Search here for available materials" 
+      v-on:input="search"/>  
+    
+  </div>
 </template>
 
 <script>

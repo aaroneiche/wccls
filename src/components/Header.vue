@@ -2,7 +2,7 @@
   <div id="header">
     <div id="logo" v-on:click="goHome"></div>
     <div id="title">Washington County Cooperative Library Services Catalog</div>
-  </div>    
+  </div>
 </template>
 
 <script>

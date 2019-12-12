@@ -1,7 +1,10 @@
 <template>
   <div id="home">    
     <Search id="search"/>
-    <Items id="items" />
+    <Items id="items" v-if="hasReservedItems"/>
+    <div v-else>
+      You don't have any reserved items yet.
+    </div>
   </div>
 </template>
 
@@ -19,7 +22,12 @@ export default {
     return {
       notify: false
     }
-  } 
+  },
+  computed: {
+    hasReservedItems: function () {
+      return this.$root.$data.reservations.length > 0;
+    }
+  }
 }
 </script>
 
