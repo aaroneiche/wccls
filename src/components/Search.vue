@@ -15,7 +15,6 @@
         this.$root.$data.search = document.getElementById("search").value;
       }
     }
-
   }
 </script>
 

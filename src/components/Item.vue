@@ -1,14 +1,14 @@
 <template>
   <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo" >
     <!-- <div class="title">{{title}}</div> -->
-    <div v-bind:class="availableClass" class="status"
-      v-on:click.stop="reserve">
-      {{reserveStatus}}
-    </div>
     <div class="info">
       <div>{{title}}</div>
       <p>{{description}}
       </p>
+    </div>
+    <div v-bind:class="availableClass" class="status"
+      v-on:click.stop="reserve">
+      {{reserveStatus}}
     </div>
   </li>
 </template>
@@ -34,7 +34,7 @@ export default {
       if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
         return "Reserved";
       }else{
-        return (this.status == 'available') ? "Reserve" : "Waitlist";
+        return (this.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
     }
   },
@@ -56,7 +56,7 @@ export default {
 
 }
 </script>
-<style scoped>
+<style >
   li {
     position: relative;
     height: 300px;
@@ -90,18 +90,26 @@ export default {
     text-align: left;
     font-weight: bold;
   }
+
   .status {
     position: absolute;
     bottom: 20px;
-    width: 100%;
     font-weight: bold;
+    font-size: 12pt;
     text-transform: capitalize;
     color: white;
-    margin-left:-10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+
     z-index: 12;
+    border-radius: 10px;
+    padding: 3px;
+
   }
+
+
   .status.available {
     background-color: seagreen;
   }

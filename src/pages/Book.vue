@@ -40,7 +40,7 @@ export default {
       document.getElementById('author').innerHTML = this.book.author;
       document.getElementById('description').innerHTML = this.book.description;
     },
-    reserve(event) {
+    reserve() {
       console.log(`reserving ${this.book.isbn}`); 
       if(this.$root.$data.reservations.indexOf(this.book.isbn) == -1 ){
         this.$root.$data.reservations.push(this.book.isbn);
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #book {
   display: flex;
   flex-direction: row;
