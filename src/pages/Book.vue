@@ -23,13 +23,16 @@ export default {
   },
   computed: {
     availableClass: function() {
-      return (this.book.status == 'available') ? "available" : "waitlist";
-    },
-    reserveStatus: function() {
-      if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
-        return "Reserved";
+      if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
+        return "reserved"
       }else{
-        return (this.book.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
+        return (this.status == 'available') ? "available" : "waitlist";
+      }    },
+    reserveStatus: function() {
+      if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
+        return "Remove from Reserved";
+      }else{
+        return (this.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
     }
   },
@@ -44,11 +47,14 @@ export default {
       if(this.$root.$data.reservations.indexOf(this.book.isbn) == -1 ){
         this.$root.$data.reservations.push(this.book.isbn);
         this.$forceUpdate();
+      }else{
+        //remove from reserved
+        let thisBook = this.$root.$data.reservations.indexOf(this.isbn);
+        this.$root.$data.reservations.splice(thisBook,1);
       }
     }
   },
   mounted() {
-   console.log();
    this.book = this.$root.$data.set.find(b=> b.isbn == this.$route.params.book);
    this.setBook();
   },
