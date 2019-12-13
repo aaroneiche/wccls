@@ -26,10 +26,10 @@ export default {
       return (this.book.status == 'available') ? "available" : "waitlist";
     },
     reserveStatus: function() {
-      if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
+      if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
         return "Reserved";
       }else{
-        return (this.book.status == 'available') ? "Reserve" : "Waitlist";
+        return (this.book.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
     }
   },
@@ -41,7 +41,6 @@ export default {
       document.getElementById('description').innerHTML = this.book.description;
     },
     reserve() {
-      console.log(`reserving ${this.book.isbn}`); 
       if(this.$root.$data.reservations.indexOf(this.book.isbn) == -1 ){
         this.$root.$data.reservations.push(this.book.isbn);
         this.$forceUpdate();
@@ -87,6 +86,7 @@ export default {
   padding-top: 5px;
   padding-bottom: 5px;
   z-index: 12;
+  cursor: pointer;
 }
 
 .status.available {
@@ -94,6 +94,9 @@ export default {
 }
 .status.waitlist {
   background-color: firebrick;
+}
+.status.reserved {
+  background-color: goldenrod;
 }
 
 </style>

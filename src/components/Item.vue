@@ -1,14 +1,14 @@
 <template>
-  <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo" >
+  <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo">
     <!-- <div class="title">{{title}}</div> -->
     <div class="info">
       <div>{{title}}</div>
       <p>{{description}}
       </p>
-    </div>
-    <div v-bind:class="availableClass" class="status"
-      v-on:click.stop="reserve">
-      {{reserveStatus}}
+      <div v-bind:class="availableClass" class="status"
+        v-on:click.stop="reserve">
+        {{reserveStatus}}
+      </div>
     </div>
   </li>
 </template>
@@ -28,11 +28,15 @@ export default {
   },
   computed: {
     availableClass: function() {
-     return (this.status == 'available') ? "available" : "waitlist";
+      if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
+        return "reserved"
+      }else{
+        return (this.status == 'available') ? "available" : "waitlist";
+      }
     },
     reserveStatus: function() {
       if(this.$root.$data.reservations.indexOf(this.isbn) != -1) {
-        return "Reserved";
+        return "Remove from Reserved";
       }else{
         return (this.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
@@ -41,7 +45,6 @@ export default {
   methods: {
     moreInfo() {
       this.$router.push({ path: `materials/${this.isbn}`});
-      
     },
     reserve() {
       if(this.$root.$data.reservations.indexOf(this.isbn) == -1 ){
@@ -49,6 +52,10 @@ export default {
         this.$root.$data.notification.visible = true;
         this.$root.$data.notification.material = this.title;
         this.$forceUpdate();
+      }else{
+        //looks like we're releasing this one...
+        let thisBook = this.$root.$data.reservations.indexOf(this.isbn);
+        this.$root.$data.reservations.splice(thisBook,1);
       }
       //Alert the user!
     }
@@ -116,6 +123,8 @@ export default {
   .status.waitlist {
     background-color: firebrick;
   }
-
+  .status.reserved {
+    background-color: goldenrod;
+  }
 
 </style>

@@ -22,8 +22,6 @@ export default {
     filteredSet () {
       if(this.$router.currentRoute.path == "/reservations") {
         return this.$root.$data.set.filter(e=>{
-          console.log(e.isbn);
-          console.log(this.$root.$data.reservations);
           return this.$root.$data.reservations.indexOf(e.isbn) != -1;
         });
       }else if(this.$root.$data.search.length > 0){
@@ -32,7 +30,9 @@ export default {
           return e.title.match(r) != null;
         });
       }else{
-        return this.$root.$data.set;
+        return this.$root.$data.set.filter(e=>{
+          return this.$root.$data.reservations.indexOf(e.isbn) == -1;
+        })
       }
     },
   },
@@ -40,10 +40,9 @@ export default {
     Item
   },
   mounted () {
-    console.log(this.$router.currentRoute);
     if(this.$router.currentRoute.path == "/reservations") {
       //filter the set
-      console.log("This is where we are.")
+      // console.log("This is where we are.")
     }
   }
 }

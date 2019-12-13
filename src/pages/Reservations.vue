@@ -1,6 +1,7 @@
 <template>
   <div id="home">    
-    <Search id="search"/>
+    <!-- <Search id="search"/> -->
+    <h2>My Reservations</h2>
     <Items id="items" v-if="hasReservedItems"/>
     <div v-else>
       You don't have any reserved items yet.
@@ -9,13 +10,12 @@
 </template>
 
 <script>
-import Search from '@/components/Search.vue'
+// import Search from '@/components/Search.vue'
 import Items from '@/components/Items.vue' 
 
 export default {
   name: 'home',
   components: {
-    Search,
     Items
   },
   data: function(){
