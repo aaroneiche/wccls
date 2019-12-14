@@ -1,21 +1,16 @@
 <template>
   <div id="home">    
-    <Search id="search"/>
-    <div id="buttonBar">
-      <button id="reserve" v-on:click="goToReservation">Go to My Reservations</button>
-    </div>
     <Items id="items" />
   </div>
 </template>
 
 <script>
-import Search from '@/components/Search.vue'
+// import Search from '@/components/Search.vue'
 import Items from '@/components/Items.vue' 
 
 export default {
   name: 'home',
   components: {
-    Search,
     Items
   },
   data: function(){
