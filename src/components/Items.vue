@@ -6,6 +6,7 @@
       v-bind:background="s.background"
       v-bind:isbn="s.isbn"
       v-bind:description="s.description"
+      v-bind:author="s.author"
       />
   </ul>
 </template>
@@ -27,7 +28,9 @@ export default {
       }else if(this.$root.$data.search.length > 0){
         return this.$root.$data.set.filter(e=>{
           let r = new RegExp(`${this.$root.$data.search}`, 'gi');
-          return e.title.match(r) != null;
+          return ((e.title.match(r) != null) ||
+            (e.author.match(r) != null)
+          );
         });
       }else{
         return this.$root.$data.set.filter(e=>{

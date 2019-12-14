@@ -26,13 +26,14 @@ export default {
       if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
         return "reserved"
       }else{
-        return (this.status == 'available') ? "available" : "waitlist";
-      }    },
+        return (this.book.status == 'available') ? "available" : "waitlist";
+      }    
+    },
     reserveStatus: function() {
       if(this.$root.$data.reservations.indexOf(this.book.isbn) != -1) {
         return "Remove from Reserved";
       }else{
-        return (this.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
+        return (this.book.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
     }
   },

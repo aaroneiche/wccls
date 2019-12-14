@@ -1,6 +1,6 @@
 <template>
   <div id="home">    
-    <!-- <Search id="search"/> -->
+
     <h2>My Reservations</h2>
     <Items id="items" v-if="hasReservedItems"/>
     <div v-else>
@@ -35,5 +35,9 @@ export default {
 #search{
   width: 100%;
 }
+#homeButton {
+
+}
+
 </style>
     

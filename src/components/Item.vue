@@ -2,8 +2,9 @@
   <li :style="{ backgroundImage:'url(' + background + ')'}" v-on:click="moreInfo">
     <!-- <div class="title">{{title}}</div> -->
     <div class="info">
-      <div>{{title}}</div>
-      <p>{{description}}
+      <div><b>{{title}}</b></div>
+      <div><em>{{author}}</em></div>
+      <p>{{trimmedDescription}}
       </p>
       <div v-bind:class="availableClass" class="status"
         v-on:click.stop="reserve">
@@ -24,7 +25,8 @@ export default {
     background: String,
     status: String,
     isbn: String,
-    description: String
+    description: String,
+    author: String
   },
   computed: {
     availableClass: function() {
@@ -40,6 +42,14 @@ export default {
       }else{
         return (this.status == 'available') ? "Reserve this book" : "Add me to the waitlist";
       }
+    },
+    trimmedDescription: function() {
+      if(this.description) {
+        return this.description.substr(0, 180) + "...";
+      }else{
+        return "No description available for this material";
+      }
+      
     }
   },
   methods: {
